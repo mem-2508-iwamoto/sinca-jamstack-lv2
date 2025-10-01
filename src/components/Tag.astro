@@ -1,0 +1,13 @@
+---
+export interface Props {
+  tagName?: string;
+  modifier?: 'category' | 'hashtag';
+  class?: string;
+}
+
+const { tagName, modifier, class: className } = Astro.props;
+
+---
+<button class:list={['tag', modifier && `tag--${modifier}`, className]} data-tag={tagName}>
+  <slot />
+</button>

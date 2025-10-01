@@ -1,11 +1,56 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Headline from '../components/Headline.astro';
+import Tag from '../components/Tag.astro';
+import Card from '../components/Card.astro';
 ---
+<Layout title="Tech Blog">
+  <main class="container pt-12">
+    <Headline level="h1" modifier='primary' class="text-center"><a href="/">Tech Blog</a></Headline>
 
-<Layout>
-	<Welcome />
+    <div class="flex items-center flex-wrap gap-2 mt-12">
+      <Tag tagName="all">All</Tag>
+      <Tag tagName="React">#React</Tag>
+      <Tag tagName="JavaScript">#JavaScript</Tag>
+      <Tag tagName="Frontend">#Frontend</Tag>
+      <Tag tagName="TypeScript">#TypeScript</Tag>
+      <Tag tagName="Programming">#Programming</Tag>
+      <Tag tagName="Next.js">#Next.js</Tag>
+      <Tag tagName="CSS">#CSS</Tag>
+      <Tag tagName="Tailwind">#Tailwind</Tag>
+      <Tag tagName="Vue.js">#Vue.js</Tag>
+      <Tag tagName="Architecture">#Architecture</Tag>
+      <Tag tagName="Astro">#Astro</Tag>
+      <Tag tagName="Performance">#Performance</Tag>
+      <Tag tagName="WebAssembly">#WebAssembly</Tag>
+      <Tag tagName="Rust">#Rust</Tag>
+    </div>
+
+    <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <Card href="/posts/webassembly-rust-frontend"
+        imageUrl="https://picsum.photos/seed/wasm1/800/600"
+        imageAlt="WebAssemblyとRustで作るフロントエンド"
+        title="WebAssemblyとRustで作るフロントエンド"
+        categoryName="Frontend"
+        tags={[{ name: 'WebAssembly' }, { name: 'Rust' }, { name: 'Frontend' }]}
+        publishDate="2023-08-02"
+        updateDate="2023-08-02" />
+      <Card href="/posts/astro-high-performance"
+        imageUrl="https://picsum.photos/seed/astro1/800/600"
+        imageAlt="Astroで作る高パフォーマンスなウェブサイト"
+        title="Astroで作る高パフォーマンスなウェブサイト"
+        categoryName="Frontend"
+        tags={[{ name: 'Astro' }, { name: 'Frontend' }, { name: 'Performance' }]}
+        publishDate="2023-08-02"
+        updateDate="2023-08-02" />
+      <Card href="/posts/modern-css-architecture"
+        imageUrl="https://picsum.photos/seed/css1/800/600"
+        imageAlt="WebAssemblyとRustで作るフロントエンド"
+        title="WebAssemblyとRustで作るフロントエンド"
+        categoryName="Frontend"
+        tags={[{ name: 'WebAssembly' }, { name: 'Rust' }]}
+        publishDate="2023-08-02"
+        updateDate="2023-08-02" />
+    </div>
+  </main>
 </Layout>

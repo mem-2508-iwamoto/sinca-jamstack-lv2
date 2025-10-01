@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import Tag from './Tag.astro';
+import Headline from './Headline.astro';
+
+export interface Props {
+  href: string;
+  imageUrl: string;
+  imageAlt: string;
+  title: string;
+  categoryName: string;
+  tags: { name: string; href?: string; }[];
+  publishDate: string;
+  updateDate: string;
+}
+const { href, imageUrl, imageAlt, title, categoryName, tags, publishDate, updateDate } = Astro.props;
+---
+
+<a href={href} class="card">
+  <div class="card__container">
+    <div class="card__imageBox">
+      <Image src={imageUrl} alt={imageAlt} class="card__image" width="800" height="600">
+    </div>
+    <div class="card__contents">
+      <Headline level="h3" modifier='secondary' class="card__title">{title}</Headline>
+      <Tag modifier='category' class="mt-3">{categoryName}</Tag>
+      <div class="card__tags">
+        {tags.map(tag => (
+          <Tag modifier='hashtag'>{`#${tag.name}`}</Tag>
+        ))}
+      </div>
+      <div class="card__meta">
+        <time datetime={publishDate}>公開日:{publishDate}</time>
+        <time datetime={updateDate}>更新日:{updateDate}</time>
+      </div>
+    </div>
+  </div>
+</a>

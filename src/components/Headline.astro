@@ -1,0 +1,16 @@
+---
+export interface Props {
+  level: 'h1' | 'h2' | 'h3';
+  modifier?: string;
+  class?: string;
+}
+
+const { level: Tag, modifier, class: className } = Astro.props;
+
+const baseClass = "headline";
+const modifierClass = modifier ? `${baseClass}--${modifier}` : "";
+---
+
+<Tag class:list={[baseClass, modifierClass, className]}>
+  <slot />
+</Tag>
